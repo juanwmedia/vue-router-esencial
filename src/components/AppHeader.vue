@@ -2,15 +2,9 @@
   <header class="header">
     <h1 class="header__title">User Directory</h1>
     <nav class="header__nav">
-      <a class="header__nav__link" href="#" @click="selectView('AppUserList')"
-        >Directory</a
-      >
-      <a class="header__nav__link" href="#" @click="selectView('AppContact')"
-        >Contact</a
-      >
-      <a class="header__nav__link" href="#" @click="selectView('AppLegal')"
-        >Legal</a
-      >
+      <RouterLink class="header__nav__link" to="/">Directory</RouterLink>
+      <RouterLink class="header__nav__link" to="/contact">Contact</RouterLink>
+      <RouterLink class="header__nav__link" to="/legal">Legal</RouterLink>
     </nav>
   </header>
 </template>

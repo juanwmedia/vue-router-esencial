@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import AppUserList from "../views/AppUserList.vue";
+import AppContact from "../views/AppContact.vue";
+import AppLegal from "../views/AppLegal.vue";
 
 Vue.use(VueRouter);
 
@@ -9,6 +11,16 @@ const routes = [
     path: "/",
     name: "Home",
     component: AppUserList
+  },
+  {
+    path: "/contact",
+    name: "Contact",
+    component: AppContact
+  },
+  {
+    path: "/legal",
+    name: "Legal",
+    component: AppLegal
   }
   // {
   //   path: "/about",
