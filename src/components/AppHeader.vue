@@ -2,19 +2,26 @@
   <header class="header">
     <h1 class="header__title">User Directory</h1>
     <nav class="header__nav">
-      <RouterLink name="Directory" dest="/" />
-      <RouterLink name="Contact" dest="/contact" />
-      <RouterLink name="Legal" dest="/legal" />
+      <a class="header__nav__link" href="#" @click="selectView('AppUserList')"
+        >Directory</a
+      >
+      <a class="header__nav__link" href="#" @click="selectView('AppContact')"
+        >Contact</a
+      >
+      <a class="header__nav__link" href="#" @click="selectView('AppLegal')"
+        >Legal</a
+      >
     </nav>
   </header>
 </template>
 
 <script>
-import RouterLink from "./RouterLink";
 export default {
   name: "AppHeader",
-  components: {
-    RouterLink
+  methods: {
+    selectView(name) {
+      this.$emit("selectView", name);
+    }
   }
 };
 </script>
@@ -36,5 +43,10 @@ export default {
 .header__nav {
   display: flex;
   justify-content: space-evenly;
+}
+
+.header__nav__link {
+  text-decoration: none;
+  color: white;
 }
 </style>
