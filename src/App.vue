@@ -1,32 +1,18 @@
 <template>
   <div id="app">
-    <AppHeader @selectView="selectView" />
-    <component :is="selectedView" />
+    <AppHeader />
+    <RouterView />
   </div>
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader";
-import AppUserList from "./views/AppUserList";
-import AppLegal from "./views/AppLegal";
-import AppContact from "./views/AppContact";
+import RouterView from "./components/RouterView";
 export default {
   name: "App",
-  data() {
-    return {
-      selectedView: "AppUserList"
-    };
-  },
-  methods: {
-    selectView(selectedView) {
-      this.selectedView = selectedView;
-    }
-  },
   components: {
-    AppUserList,
-    AppHeader,
-    AppLegal,
-    AppContact
+    RouterView,
+    AppHeader
   }
 };
 </script>

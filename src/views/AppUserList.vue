@@ -1,10 +1,5 @@
 <template>
   <main>
-    <AppUser
-      v-if="selectedUser"
-      @closeUser="selectedUser = null"
-      :user="selectedUser"
-    />
     <article class="users">
       <section
         @click="showUser(user)"
@@ -26,7 +21,7 @@
 </template>
 
 <script>
-import AppUser from "../components/AppUser";
+import router from "../router";
 export default {
   name: "AppUserList",
   mounted() {
@@ -34,8 +29,7 @@ export default {
   },
   data() {
     return {
-      users: [],
-      selectedUser: null
+      users: []
     };
   },
   methods: {
@@ -49,15 +43,16 @@ export default {
       }
     },
     showUser(user) {
-      this.selectedUser = user;
+      router.$emit("navigate", {
+        slug: user.login.username,
+        name: "users",
+        user
+      });
     },
     fullName(index) {
       const user = this.users[index];
       return `${user.name.first} ${user.name.last}`;
     }
-  },
-  components: {
-    AppUser
   }
 };
 </script>
