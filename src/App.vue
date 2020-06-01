@@ -1,32 +1,16 @@
 <template>
   <div id="app">
-    <AppHeader @selectView="selectView" />
-    <component :is="selectedView" />
+    <AppHeader />
+    <router-view />
   </div>
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader";
-import AppUserList from "./views/AppUserList";
-import AppLegal from "./views/AppLegal";
-import AppContact from "./views/AppContact";
 export default {
   name: "App",
-  data() {
-    return {
-      selectedView: "AppUserList"
-    };
-  },
-  methods: {
-    selectView(selectedView) {
-      this.selectedView = selectedView;
-    }
-  },
   components: {
-    AppUserList,
-    AppHeader,
-    AppLegal,
-    AppContact
+    AppHeader
   }
 };
 </script>
@@ -45,6 +29,5 @@ body {
 
 body {
   font-family: sans-serif;
-  background-color: lightgray;
 }
 </style>
