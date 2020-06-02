@@ -1,29 +1,29 @@
 <template>
   <section class="user">
-    <a href="#" @click="closeUser" class="close">
-      ✕
-    </a>
-    <h2 class="user__name">{{ userData.fullName }}</h2>
-    <img
-      :src="userData.thumbnail"
-      :ismap="userData.fullName"
-      class="user__picture"
-    />
+    <template v-if="user">
+      <h2 class="user__name">{{ userData.fullName }}</h2>
+      <img
+        :src="userData.thumbnail"
+        :ismap="userData.fullName"
+        class="user__picture"
+      />
+    </template>
   </section>
 </template>
 
 <script>
 export default {
   name: "AppUser",
-  props: {
-    user: {
-      type: Object
-    }
+  mounted() {
+    console.log(this.$route.params.username);
+    this.user = this.$root.$refs.AppUserList.users.find(user => {
+      return user.login.username === this.$route.params.username;
+    });
   },
-  methods: {
-    closeUser() {
-      this.$emit("closeUser");
-    }
+  data() {
+    return {
+      user: null
+    };
   },
   computed: {
     userData() {

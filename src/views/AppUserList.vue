@@ -1,10 +1,5 @@
 <template>
   <main>
-    <AppUser
-      v-if="selectedUser"
-      @closeUser="selectedUser = null"
-      :user="selectedUser"
-    />
     <article class="users">
       <section
         @click="showUser(user)"
@@ -12,30 +7,31 @@
         v-for="(user, $index) in users"
         :key="user.login.uuid"
       >
-        <div class="fade">
-          {{ fullName($index) }}
-        </div>
-        <img
-          class="user__thumbnail"
-          :src="user.picture.medium"
-          :alt="user.name.first"
-        />
+        <RouterLink :to="`user/${user.login.username}`">
+          <div class="fade">
+            {{ fullName($index) }}
+          </div>
+          <img
+            class="user__thumbnail"
+            :src="user.picture.medium"
+            :alt="user.name.first"
+          />
+        </RouterLink>
       </section>
     </article>
   </main>
 </template>
 
 <script>
-import AppUser from "../components/AppUser";
 export default {
   name: "AppUserList",
   mounted() {
     this.getUsers();
+    this.$root.$refs.AppUserList = this;
   },
   data() {
     return {
-      users: [],
-      selectedUser: null
+      users: []
     };
   },
   methods: {
@@ -55,9 +51,6 @@ export default {
       const user = this.users[index];
       return `${user.name.first} ${user.name.last}`;
     }
-  },
-  components: {
-    AppUser
   }
 };
 </script>
