@@ -2,7 +2,6 @@
   <main>
     <article class="users">
       <section
-        @click="showUser(user)"
         class="users__item"
         v-for="(user, $index) in users"
         :key="user.login.uuid"
@@ -23,34 +22,17 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "AppUserList",
-  mounted() {
-    this.getUsers();
-    this.$root.$refs.AppUserList = this;
-  },
-  data() {
-    return {
-      users: []
-    };
-  },
   methods: {
-    async getUsers() {
-      try {
-        await fetch("https://randomuser.me/api/?results=100")
-          .then(data => data.json())
-          .then(data => (this.users = data.results));
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    showUser(user) {
-      this.selectedUser = user;
-    },
     fullName(index) {
       const user = this.users[index];
       return `${user.name.first} ${user.name.last}`;
     }
+  },
+  computed: {
+    ...mapState(["users"])
   }
 };
 </script>
