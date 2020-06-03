@@ -10,10 +10,15 @@
       <p class="user__email">{{ userData.email }}</p>
 
       <!-- User extended info -->
-      <RouterLink class="user__more" :to="`/user/${this.username}/info`"
+      <RouterLink
+        class="user__more"
+        :to="{
+          path: `/user/${this.username}/info`,
+          params: { username: this.username }
+        }"
         >Show user info 👁</RouterLink
       >
-      <RouterView :username="username" />
+      <RouterView />
     </template>
   </section>
 </template>
