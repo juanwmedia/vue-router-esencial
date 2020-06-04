@@ -30,7 +30,7 @@ const routes = [
     component: AppUser,
     children: [
       {
-        path: "/user/:username/info",
+        path: "information",
         name: "Info",
         props: true,
         component: UserInfo

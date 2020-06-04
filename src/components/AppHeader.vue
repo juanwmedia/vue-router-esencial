@@ -2,9 +2,15 @@
   <header class="header">
     <h1 class="header__title">User Directory</h1>
     <nav class="header__nav">
-      <RouterLink class="header__nav__link" to="/">Directory</RouterLink>
-      <RouterLink class="header__nav__link" to="/contact">Contact</RouterLink>
-      <RouterLink class="header__nav__link" to="/legal">Legal</RouterLink>
+      <RouterLink class="header__nav__link" :to="{ name: 'Home' }"
+        >Directory</RouterLink
+      >
+      <RouterLink class="header__nav__link" :to="{ name: 'Contact' }"
+        >Contact</RouterLink
+      >
+      <RouterLink class="header__nav__link" :to="{ name: 'Legal' }"
+        >Legal</RouterLink
+      >
     </nav>
   </header>
 </template>

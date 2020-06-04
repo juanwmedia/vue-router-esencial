@@ -6,7 +6,9 @@
         v-for="(user, $index) in users"
         :key="user.login.uuid"
       >
-        <RouterLink :to="`user/${user.login.username}`">
+        <RouterLink
+          :to="{ name: 'Users', params: { username: user.login.username } }"
+        >
           <div class="fade">
             {{ fullName($index) }}
           </div>
