@@ -5,6 +5,7 @@ import AppContact from "../views/AppContact.vue";
 import AppLegal from "../views/AppLegal.vue";
 import AppUser from "../views/AppUser.vue";
 import UserInfo from "../components/UserInfo.vue";
+import NotFound from "../components/NotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -36,7 +37,8 @@ const routes = [
         component: UserInfo
       }
     ]
-  }
+  },
+  { path: "*", component: NotFound }
   // {
   //   path: "/about",
   //   name: "About",
