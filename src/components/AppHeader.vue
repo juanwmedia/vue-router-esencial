@@ -49,4 +49,10 @@ export default {
   text-decoration: none;
   color: white;
 }
+
+nav a.escuela-vue-exact,
+nav a.escuela-vue-active {
+  color: goldenrod;
+  border-bottom: 1px solid;
+}
 </style>
