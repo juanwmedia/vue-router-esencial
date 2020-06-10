@@ -10,6 +10,11 @@ import NotFound from "../components/NotFound.vue";
 Vue.use(VueRouter);
 
 const routes = [
+  // {
+  //   path: "/",
+  //   redirect: { name: "Home" }
+  // },
+  { path: "/user", component: AppUserList, alias: "/" },
   {
     path: "/user",
     name: "Home",
