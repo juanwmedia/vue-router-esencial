@@ -5,7 +5,9 @@
       <RouterLink class="header__nav__link" :to="{ name: 'Home' }"
         >Directory</RouterLink
       >
-      <RouterLink class="header__nav__link" :to="{ name: 'Contact' }"
+      <RouterLink
+        class="header__nav__link"
+        :to="{ name: 'Contact', hash: '#form' }"
         >Contact</RouterLink
       >
       <RouterLink class="header__nav__link" :to="{ name: 'Legal' }"

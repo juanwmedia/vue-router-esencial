@@ -60,6 +60,32 @@
       fuga doloribus maiores voluptatibus autem inventore consectetur. Earum a
       quo odio amet vel quod hic neque molestias perspiciatis voluptas!
     </p>
+    <p>
+      Amet deleniti id, libero quas commodi quod hic, mollitia dolor similique
+      fuga doloribus maiores voluptatibus autem inventore consectetur. Earum a
+      quo odio amet vel quod hic neque molestias perspiciatis voluptas!
+    </p>
+    <p>
+      Amet deleniti id, libero quas commodi quod hic, mollitia dolor similique
+      fuga doloribus maiores voluptatibus autem inventore consectetur. Earum a
+      quo odio amet vel quod hic neque molestias perspiciatis voluptas!
+    </p>
+    <p>
+      Amet deleniti id, libero quas commodi quod hic, mollitia dolor similique
+      fuga doloribus maiores voluptatibus autem inventore consectetur. Earum a
+      quo odio amet vel quod hic neque molestias perspiciatis voluptas!
+    </p>
+    <p>
+      Amet deleniti id, libero quas commodi quod hic, mollitia dolor similique
+      fuga doloribus maiores voluptatibus autem inventore consectetur. Earum a
+      quo odio amet vel quod hic neque molestias perspiciatis voluptas!
+    </p>
+    <h2>Contact form</h2>
+    <form id="form">
+      <input type="text" placeholder="Name" />
+      <textarea placeholder="Message"></textarea>
+      <input type="submit" />
+    </form>
   </div>
 </template>
 
@@ -80,5 +106,15 @@ export default {
 
 .content__separator {
   border-color: gray;
+}
+form {
+  background-color: gray;
+  padding: 1rem;
+}
+
+form * {
+  width: 100%;
+  margin: 0.3rem 0;
+  padding: 0.2rem;
 }
 </style>

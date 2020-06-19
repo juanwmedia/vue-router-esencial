@@ -1,19 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import AppUserList from "../views/AppUserList.vue";
-// import AppContact from "../views/AppContact.vue";
-// import AppLegal from "../views/AppLegal.vue";
-// import AppUser from "../views/AppUser.vue";
-// import UserInfo from "../components/UserInfo.vue";
 import NotFound from "../components/NotFound.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
-  // {
-  //   path: "/",
-  //   redirect: { name: "Home" }
-  // },
   {
     path: "/user",
     name: "Home",
@@ -21,11 +12,6 @@ const routes = [
       import(/* webpackChunkName: "AppUserList" */ "../views/AppUserList.vue"),
     alias: "/"
   },
-  // {
-  //   path: "/user",
-  //   name: "Home",
-  //   component: AppUserList
-  // },
   {
     path: "/contact",
     name: "Contact",
@@ -56,15 +42,6 @@ const routes = [
     ]
   },
   { path: "*", component: NotFound }
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue")
-  // }
 ];
 
 const router = new VueRouter({
@@ -72,7 +49,26 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   linkExactActiveClass: "escuela-vue-exact",
   linkActiveClass: "escuela-vue-active",
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    console.log(to, from, savedPosition);
+    return new Promise(resolve => {
+      const position = (function() {
+        if (savedPosition) {
+          return savedPosition;
+        } else {
+          if (to.hash) {
+            return {
+              selector: to.hash
+            };
+          }
+        }
+      })();
+      router.app.$root.$once("triggerScroll", () => {
+        router.app.$nextTick(() => resolve(position));
+      });
+    });
+  }
 });
 
 export default router;
