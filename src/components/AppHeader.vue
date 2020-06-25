@@ -13,6 +13,7 @@
       <RouterLink class="header__nav__link" :to="{ name: 'Legal' }"
         >Legal</RouterLink
       >
+      <RouterLink :to="{ name: 'Dashboard' }">Dashboard</RouterLink>
     </nav>
   </header>
 </template>

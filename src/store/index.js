@@ -5,14 +5,30 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    users: []
+    users: [],
+    username: null,
+    auth: false
   },
   mutations: {
     setUsers(state, users) {
       state.users = users;
+    },
+    doLogin(state, username) {
+      state.auth = true;
+      state.username = username;
+    },
+    doLogout(state) {
+      state.auth = false;
+      state.username = null;
     }
   },
   actions: {
+    doLogin({ commit }, username) {
+      commit("doLogin", username);
+    },
+    doLogout({ commit }) {
+      commit("doLogout");
+    },
     async setUsers({ commit }) {
       const users = window.localStorage.getItem("users");
       if (users) {

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import NotFound from "../components/NotFound.vue";
+import store from "../store";
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,20 @@ const routes = [
     name: "Legal",
     component: () =>
       import(/* webpackChunkName: "AppLegal" */ "../views/AppLegal.vue")
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    meta: {
+      requiresAuth: true
+    },
+    component: () =>
+      import(/* webpackChunkName: "Dashboard" */ "../views/UserDashboard")
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: () => import(/* webpackChunkName: "Login" */ "../views/AppLogin")
   },
   {
     path: "/user/:username",
@@ -68,6 +83,18 @@ const router = new VueRouter({
         router.app.$nextTick(() => resolve(position));
       });
     });
+  }
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.state.auth) {
+      next();
+    } else {
+      next({ name: "Login" });
+    }
+  } else {
+    next();
   }
 });
 
